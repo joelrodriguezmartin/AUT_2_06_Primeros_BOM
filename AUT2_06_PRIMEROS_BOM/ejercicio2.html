@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Ejercicio 1 - BOM</title>
+<script type="text/javascript">
+   window.onload = function(){
+       //Pantalla
+       document.getElementById("alturaDisponible").innerHTML = window.screen.availHeight;
+       document.getElementById("anchoDisponible").innerHTML = window.screen.availWidth;
+       document.getElementById("alturaTotal").innerHTML = window.screen.height;
+       document.getElementById("anchoTotal").innerHTML = window.screen.width;
+       document.getElementById("profundidadColor").innerHTML = window.screen.colorDepth;
+       document.getElementById("resolucion").innerHTML = window.screen.colorDepth;
+       //Ventana
+       document.getElementById("alturaExterior").innerHTML = window.outerHeight;
+       document.getElementById("anchoExterior").innerHTML = window.outerWidth;
+       document.getElementById("coordenadaX").innerHTML = window.screenX
+       document.getElementById("coordenadaY").innerHTML = window.screenY;
+       document.getElementById("contadorPag").innerHTML = "Ha visitado "+window.history.length+" páginas";
+       
+       if(window.navigator.userAgent.indexOf("Mozilla") > -1){//Asignamos una hoja si es mozilla
+            var head = document.getElementsByTagName('HEAD')[0]; //Creamos el link al css y se lo añadimos al head
+            var link = document.createElement('link');
+            link.rel = 'stylesheet'; 
+            link.type = 'text/css';
+            link.href = 'style.css'; 
+            head.appendChild(link); 
+       }if(window.navigator.userAgent.indexOf("Chrome") > -1){//Y otra hoja si es chrome, no lo hacemos con else porque ambos contienen mozilla y hay que sobreescribir
+            var head = document.getElementsByTagName('HEAD')[0]; //Creamos el link al css y se lo añadimos al head
+            var link = document.createElement('link');
+            link.rel = 'stylesheet'; 
+            link.type = 'text/css';
+            link.href = 'style2.css'; 
+            head.appendChild(link); 
+       }
+   }
+   
+</script>
+</head>
+<body>
+    <div class = "pantalla">
+        <h1>PANTALLA</h1>
+        <label for="alturaDisponible">Altura disponible: </label><p id="alturaDisponible"></p>
+        <label for="anchoDisponible">Ancho disponible: </label><p id="anchoDisponible"></p>
+        <label for="alturaTotal">Altura total: </label><p id="alturaTotal"></p>
+        <label for="anchoTotal">Ancho total: </label><p id="anchoTotal"></p>
+        <label for="profundidadColor">Profundidad de Color: </label><p id="profundidadColor"></p>
+        <label for="resolucion">Resolucion(bits por pixel): </label><p id="resolucion"></p>
+    </div>
+    <div class="ventana">
+        <h1>VENTANA</h1>
+        <label for="alturaExterior">Altura exterior: </label><p id="alturaExterior"></p>
+        <label for="anchoExterior">Ancho exterior: </label><p id="anchoExterior"></p>
+        <label for="coordenadaX">Coordenada X: </label><p id="coordenadaX"></p>
+        <label for="coordenadaY">Coordenada Y: </label><p id="coordenadaY"></p>
+        <label for="contadorPag">Ha visitado: </label><p id="contadorPag"></p>
+    </div>
+    <div class = "despedida">
+        <h1>Despedida</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor quibusdam laborum saepe repudiandae fugiat sed, 
+            aliquid quos provident voluptatibus nisi mollitia, voluptas accusamus incidunt veritatis repellendus neque cum animi vitae!</p>
+    </div>
+</body>
+</html>

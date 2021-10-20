@@ -1,0 +1,79 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>Ejercicio 1 - BOM</title>
+    <script type="text/javascript">
+        let ventana = undefined;
+        function abrirVentana() {
+            let altura = 400;
+            let ancho = 400;
+            let top = window.screen.height / 2 - altura / 2;//Tamaño de la pantalla dividido por 2 menos el tamaño de la ventana dividido por 2 son las coordenadas del centro
+            let left = window.screen.width / 2 - 400 / 2;
+            ventana = window.open("", "", "height=" + altura + ",width=" + ancho + ",position=centerscreen,left=" + left + ",top=" + top);
+            ventana.focus();
+        }
+        function cerrarVentana() {
+            if (ventana == undefined || ventana.closed) {//Comprobamos si la ventana existe o está cerrada
+                alert("La ventana no existe");
+            }
+            else {
+                ventana.close();
+            }
+        }
+        function aumentarVentana() {
+            if (ventana == undefined || ventana.closed) {//Comprobamos si la ventana existe o está cerrada
+                alert("La ventana no existe");
+            }
+            else {
+                ventana.focus();//Maximo en screen width height mensaje
+                ventana.outerHeight += 30;
+                ventana.outerWidth += 30;
+            }
+        }
+        function disminuirVentana() {
+            if (ventana == undefined || ventana.closed) {//Comprobamos si la ventana existe o está cerrada
+                alert("La ventana no existe");
+            }
+            else {
+                ventana.focus();//Minimo 100 mensaje
+                ventana.outerHeight -= 30;
+                ventana.outerWidth -= 30;
+            }
+        }
+        function moverVentana() {
+            if (ventana == undefined || ventana.closed) {//Comprobamos si la ventana existe o está cerrada
+                alert("La ventana no existe");
+            }
+            else {
+                let x, y;
+                x = document.getElementById("x").value;
+                y = document.getElementById("y").value;
+                if (isNaN(parseInt(x)) || isNaN(parseInt(y))) {
+                    alert("Numeros no válidos")
+                }
+                else {
+                    ventana.focus();
+                    ventana.moveTo(parseInt(x), parseInt(y));
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <button onclick="abrirVentana()">Abrir ventana</button> <br><br>
+    <button onclick="cerrarVentana()">Cerrar ventana</button> <br><br>
+    <button onclick="aumentarVentana()">Aumentar ventana</button> <br><br>
+    <button onclick="disminuirVentana()">Disminuir ventana</button> <br><br>
+    <label for="x">Posicion X</label>
+    <input type="text" name="x" id="x">
+    <label for="y">Posicion Y</label>
+    <input type="text" name="y" id="y">
+    <button onclick="moverVentana()">Mover ventana</button> <br><br>
+</body>
+
+</html>
